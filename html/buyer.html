@@ -9,7 +9,7 @@
       $("#query").click(function(){
         var key_word = document.getElementById("key_word").value;
         var search_key = document.getElementById("search_key").value;
-        var url = "http:127.0.0.1:8090/query?"+"key_word="+key_word+"&search_key="+search_key;
+        var url = "http://127.0.0.1:8090/query?"+"key_word="+key_word+"&search_key="+search_key;
 
         $.get(url,function(data,status){
         //alert("数据：" + data.msg + "\n状态：" + status);
@@ -20,7 +20,7 @@
 
     $(document).ready(function(){
       $("#gen_Keys").click(function(){
-        var url = "http://10.217.7.227:8080/reencryption/genkeys?user=buyer";
+        var url = "http://127.0.0.1:8080/reencryption/genkeys?user=buyer";
 
         $.get(url,function(data,status){
 
@@ -35,7 +35,7 @@
     $(document).ready(function(){
       $("#get_plan_text").click(function(){
         var number = document.getElementById("text_number").value;
-        var url = "http://10.217.7.227:8080/reencryption/getText?number=number";
+        var url = "http://127.0.0.1:8080/reencryption/getText?number=number";
 
         $.get(url,function(data,status){
           document.getElementById("plan_text").value =data;

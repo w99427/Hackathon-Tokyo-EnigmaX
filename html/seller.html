@@ -11,7 +11,7 @@
           var abstract_2 = document.getElementById("abstract_2").value;
           var abstract_3 = document.getElementById("abstract_3").value;
           var search_key = document.getElementById("search_key").value;
-          var url = "http:127.0.0.1:8090/upload?"+"abstract_1="+abstract_1+"&abstract_2="+abstract_2+"&abstract_3="+abstract_3+"&search_key="+search_key;
+          var url = "http://127.0.0.1:8090/upload?"+"abstract_1="+abstract_1+"&abstract_2="+abstract_2+"&abstract_3="+abstract_3+"&search_key="+search_key;
 
           $.get(url,function(data,status){
             document.getElementById("cipher_1").value =data.cipher_1;
@@ -24,7 +24,7 @@
 
       $(document).ready(function(){
         $("#gen_Keys").click(function(){
-          var url = "http://10.217.7.227:8080/reencryption/genkeys?user=seller";
+          var url = "http://127.0.0.1:8080/reencryption/genkeys?user=seller";
 
           $.get(url,function(data,status){
 
@@ -48,7 +48,7 @@
             text = document.getElementById("original_3").value;
           }
           
-          var url = "http://10.217.7.227:8080/reencryption/sendText?text="+text;
+          var url = "http://127.0.0.1:8080/reencryption/sendText?text="+text;
 
           $.get(url,function(data,status){
             //var obj = JSON.parse(data);
