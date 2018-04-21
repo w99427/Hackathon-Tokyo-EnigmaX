@@ -46,3 +46,4 @@ target/
 .classpath
 .project
 ext/
+ext/nics-crypto
