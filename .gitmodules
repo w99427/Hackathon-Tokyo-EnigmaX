@@ -1,3 +1,6 @@
 [submodule "ext/nics-crypto"]
 	path = ext/nics-crypto
 	url = https://github.com/cygnusv/nics-crypto
+[submodule "ext/searchable-encryption-js"]
+	path = ext/searchable-encryption-js
+	url = https://github.com/wanasit/searchable-encryption-js.git
