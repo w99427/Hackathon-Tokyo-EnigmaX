@@ -1,0 +1,3 @@
+[submodule "ext/nics-crypto"]
+	path = ext/nics-crypto
+	url = https://github.com/cygnusv/nics-crypto
