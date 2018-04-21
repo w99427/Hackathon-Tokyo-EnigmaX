@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I am Buyer!</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#query").click(function(){
+        var key_word = document.getElementById("key_word").value;
+        var search_key = document.getElementById("search_key").value;
+        var url = "http:127.0.0.1:8090/query?"+"key_word="+key_word+"&search_key="+search_key;
+
+        $.get(url,function(data,status){
+        //alert("数据：" + data.msg + "\n状态：" + status);
+        document.getElementById("result").value ="cipher 1:"+data.result_1 +"   "+"cipher 2:"+data.result_2 +"   "+"cipher 3:"+data.result_3;
+        });
+      });
+    });
+
+    $(document).ready(function(){
+      $("#gen_Keys").click(function(){
+        var url = "http://10.217.7.227:8080/reencryption/genkeys?user=buyer";
+
+        $.get(url,function(data,status){
+
+        var obj = JSON.parse(data);
+        document.getElementById("private_key").value =obj.sk;
+        document.getElementById("public_key").value =obj.pk;
+        alert("\n状态：" + status);
+        });
+      });
+    });
+
+    $(document).ready(function(){
+      $("#get_plan_text").click(function(){
+        var number = document.getElementById("text_number").value;
+        var url = "http://10.217.7.227:8080/reencryption/getText?number=number";
+
+        $.get(url,function(data,status){
+          document.getElementById("plan_text").value =data;
+          alert("\n状态：" + status);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+    <div class="b_container">
+        key_word: <input type="text" id="key_word" value="World!" style=width:500px;"><br>
+        search_key: <input type="text" id="search_key"><br><br>
+        result: <input type="text" id="result"style=width:500px;" ><br><br>
+        <button onclick="getQuery()" id="query" >Query</button><br><br>
+        <br><br>
+        private key: <input type="text" id="private_key"style=width:900px;" ><br><br>
+        public key: <input type="text" id="public_key"style=width:900px;" ><br><br>
+        <button onclick="getTextGen()" id="gen_Keys" >Gen Keys</button><br><br>
+        <br><br>
+        CIPHER TEXT NUMBER: <input type="text" id="text_number"style=width:900px;" ><br><br>
+        PLAN TEXT: <input type="text" id="plan_text"style=width:900px;" ><br><br>
+        <button onclick="getTextGet()" id="get_plan_text" >GET PLAN TEXT</button><br><br>
+        <hr/>
+    </div>
+</body>
+<script type="text/javascript">
+</script>
+</html>

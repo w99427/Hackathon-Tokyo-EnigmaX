@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I am Seller!</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#upload").click(function(){
+          var abstract_1 = document.getElementById("abstract_1").value;
+          var abstract_2 = document.getElementById("abstract_2").value;
+          var abstract_3 = document.getElementById("abstract_3").value;
+          var search_key = document.getElementById("search_key").value;
+          var url = "http:127.0.0.1:8090/upload?"+"abstract_1="+abstract_1+"&abstract_2="+abstract_2+"&abstract_3="+abstract_3+"&search_key="+search_key;
+
+          $.get(url,function(data,status){
+            document.getElementById("cipher_1").value =data.cipher_1;
+            document.getElementById("cipher_2").value =data.cipher_2;
+            document.getElementById("cipher_3").value =data.cipher_3;
+            alert("\n状态：" + status);
+          });
+        });
+      });
+
+      $(document).ready(function(){
+        $("#gen_Keys").click(function(){
+          var url = "http://10.217.7.227:8080/reencryption/genkeys?user=seller";
+
+          $.get(url,function(data,status){
+
+          var obj = JSON.parse(data);
+          document.getElementById("private_key").value =obj.sk;
+          document.getElementById("public_key").value =obj.pk;
+          alert("\n状态：" + status);
+          });
+        });
+      });
+
+      $(document).ready(function(){
+        $("#send_btn").click(function(){
+          var text = document.getElementById("text_send").value;
+
+          if(text == "1"){
+            text = document.getElementById("original_1").value;
+          } else if(text == "2"){
+            text = document.getElementById("original_2").value;
+          } else if(text == "3"){
+            text = document.getElementById("original_3").value;
+          }
+          
+          var url = "http://10.217.7.227:8080/reencryption/sendText?text="+text;
+
+          $.get(url,function(data,status){
+            //var obj = JSON.parse(data);
+            //document.getElementById("private_key").value =obj.sk;
+            //document.getElementById("public_key").value =obj.pk;
+            alert("\n状态：" + status);
+          });
+        });
+      });
+    </script>
+</head>
+<body>
+  <div class="text_container">
+    PLAN TEXT 1: <input type="text" id="original_1" value="Hello World This Is What You Like" style=width:500px;"><br>
+    INDEX 1: <input type="text" id="abstract_1" value="Hello World" style=width:500px;"><br><br>
+
+    PLAN TEXT 2: <input type="text" id="original_2" value="Hello World this is what You Like" style=width:500px;"><br>
+    INDEX 2: <input type="text" id="abstract_2" value="Hello world" style=width:500px;"><br><br>
+
+    PLAN TEXT 3: <input type="text" id="original_3" value="Hello World this is the best regards" style=width:500px;"><br>
+    INDEX 3: <input type="text" id="abstract_3" value="hello World" style=width:500px;"><br><br>
+
+    search_key: <input type="text" id="search_key"><br><br>
+    S-INDEX 1: <input type="text" id="cipher_1"style=width:500px;" ><br><br>
+    S-INDEX 2: <input type="text" id="cipher_2"style=width:500px;" ><br><br>
+    S-INDEX 3: <input type="text" id="cipher_3"style=width:500px;" ><br><br>
+    <button onclick="getText()" id="upload" >Upload S-INDEX</button><br><br>
+    <br><br>
+    private key: <input type="text" id="private_key"style=width:900px;" ><br><br>
+    public key: <input type="text" id="public_key"style=width:900px;" ><br><br>
+    <button onclick="getTextGen()" id="gen_Keys" >Gen Keys</button><br><br>
+    <br><br>
+    CIPHER TEXT NUMBER: <input type="text" id="text_send"style=width:900px;" ><br><br>
+    <button onclick="getTextSend()" id="send_btn" >Upload CIPHER TEXT</button><br><br>
+    <hr />
+  </div>
+</body>
+<script type="text/javascript">
+</script>
+</html>
