@@ -40,3 +40,9 @@ Thumbs.db
 ######################################
 .vscode/
 node_modules/
+.settings/
+lib/
+target/
+.classpath
+.project
+ext/
