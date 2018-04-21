@@ -39,6 +39,4 @@ Thumbs.db
 # Project specific folders and files #
 ######################################
 .vscode/
-node_module/
-*.abi
-*.bin
+node_modules/

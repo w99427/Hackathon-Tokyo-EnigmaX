@@ -1,3 +1,3 @@
 1. git submodule update --init --recursive
-2. cd sse/
-3. node ./sse.js
+2. cd ses/
+3. node ./ses.js

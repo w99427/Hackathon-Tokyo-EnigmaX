@@ -1,0 +1,9 @@
+{
+  "name": "ses",
+  "version": "0.0.1",
+  "description": "simple searchable encryption service",
+  "main": "ses.js",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
